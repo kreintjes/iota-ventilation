@@ -2,7 +2,7 @@
 
 void setupWiFi() {
   Serial.print("Starting Access Point... ");
-  boolean result = WiFi.softAP(WIFI_SSID, WIFI_PASSWORD, 8, true);
+  boolean result = WiFi.softAP(WIFI_SSID, WIFI_PASSWORD, 8, false);
   
   if(result == true) {
     Serial.println("Ready");

@@ -7,6 +7,7 @@ void setup() {
   Serial.println();
   
   setupLed();
+  setupRelais();
   setupWiFi();
   setupSocket();
 }
@@ -15,7 +16,19 @@ void loop() {
   loopSocket();
 }
 
-void onDataReceive(String line) {
-  setLed(line == "true");
+void onDataReceive(String state) {
+  if(state == "high") {
+    setLed(true);
+    setRelais1(false);
+    setRelais2(true);
+  } else if(state == "low") {
+    setLed(true);
+    setRelais1(true);
+    setRelais2(false);
+  } else {
+    setLed(false);
+    setRelais1(false);
+    setRelais2(false);
+  }
 }
 
