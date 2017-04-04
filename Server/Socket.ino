@@ -1,3 +1,5 @@
+#include <ESP8266WiFi.h>
+
 WiFiServer server(1337);
 
 void setupSocket() {
