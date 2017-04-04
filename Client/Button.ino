@@ -16,13 +16,15 @@ void setupButton() {
 }
 
 void singleClick() {
-  sendDataToServer();
+  sendDataToServer("off");
 }
 
 void doubleClick() {
+  sendDataToServer("low");
 }
 
 void longPress() {
+  sendDataToServer("high");
 }
 
 void loopButton() {
