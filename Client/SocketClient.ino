@@ -4,7 +4,8 @@ void sendDataToServer(String state) {
   if (espClient.connect(WiFi.gatewayIP(), 1337))
   {
     Serial.println("connected]");
-    Serial.println("[Sending a request]");
+    Serial.println("[Sending a request] " + state);
+    
     espClient.print(state);
 
     espClient.stop();

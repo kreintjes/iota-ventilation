@@ -1,7 +1,5 @@
 #include <ESP8266WiFi.h>
 
-boolean wifi_connected = false;
-
 void setupWiFi() {
   WiFi.mode(WIFI_STA);
   WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
