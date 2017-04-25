@@ -7,14 +7,19 @@
 #define VENTILATION_LOW     60.00
 #define VENTILATION_HIGH    80.00
 
+#define DELAY 100
+#define DHT_READ_INTERVAL 60000
+
 WiFiClient espClient;
 boolean wifi_connected = false;
 
 float humidity;
 
+String lastState;
+
 void setup() {
   Serial.begin(115200);
-  //delay(10);
+  delay(10);
   Serial.println();
   
   setupWiFi();
@@ -22,7 +27,7 @@ void setup() {
 }
 
 void loop() {
-  delay(100);
+  delay(DELAY);
   loopWiFi();
   if(wifi_connected) {
     loopDHT();
@@ -32,12 +37,18 @@ void loop() {
 }
 
 void loopLogic() {
+  String newState;
   if(humidity >= VENTILATION_HIGH) {
-    sendDataToServer("high");
+    newState = "high";
   } else if (humidity >= VENTILATION_LOW && humidity < VENTILATION_HIGH) {
-    sendDataToServer("low");
+    newState = "low";
   } else {
-    sendDataToServer("off");
+    newState = "off";
+  }
+
+  if(lastState == NULL || lastState != newState) {
+    sendDataToServer(newState);
+    lastState = newState;
   }
 }
 
