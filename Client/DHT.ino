@@ -20,7 +20,7 @@
 // as the current DHT reading algorithm adjusts itself to work on faster procs.
 DHT dht(DHTPIN, DHTTYPE);
 
-uint32_t lastReadTime;
+unsigned long lastReadTime;
 
 void setupDHT() {
   dht.begin();
