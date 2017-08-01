@@ -4,8 +4,8 @@
 #define WIFI_SSID           "wicked"
 #define WIFI_PASSWORD       "thereisnospoon"
 
-#define VENTILATION_LOW     60.00
-#define VENTILATION_HIGH    80.00
+#define VENTILATION_LOW     60
+#define VENTILATION_HIGH    70
 
 #define DELAY 100
 #define DHT_READ_INTERVAL 60000
@@ -14,7 +14,7 @@
 WiFiClient espClient;
 boolean wifi_connected = false;
 
-float humidity;
+int humidity;
 
 String lastState;
 unsigned long lastSendTime;

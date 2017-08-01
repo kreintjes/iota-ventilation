@@ -30,14 +30,13 @@ void loopDHT() {
   if(lastReadTime != NULL && millis() - lastReadTime < DHT_READ_INTERVAL) {
     return;
   }
-  float h = dht.readHumidity();
+  int h = (int) dht.readHumidity();
   if(isnan(h)) {
     Serial.println("Failed to read from DHT sensor");
     return;
   }
 
-  Serial.print("humidity: ");
-  Serial.println(h);
+  Serial.printf("humidity: %d\%\n", h);
   humidity = h;
   lastReadTime = millis();
 }
