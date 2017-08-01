@@ -3,10 +3,14 @@ void setRelais(int pin, bool state) {
 }
 
 void setRelais1(bool state) {
+  Serial.print("Turning relais 1 ");
+  Serial.println(state ? "on" : "off");
   setRelais(D1, state);
 }
 
 void setRelais2(bool state) {
+  Serial.print("Turning relais 2 ");
+  Serial.println(state ? "on" : "off");
   setRelais(D2, state);
 }
 
