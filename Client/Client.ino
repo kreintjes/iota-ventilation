@@ -9,7 +9,6 @@
 
 #define DELAY 100
 #define DHT_READ_INTERVAL 6000
-#define FAILOVER_SEND_INTERVAL 3600000
 
 WiFiClient espClient;
 boolean wifi_connected = false;
@@ -17,7 +16,6 @@ boolean wifi_connected = false;
 int humidity;
 
 String lastState;
-unsigned long lastSendTime;
 
 void setup() {
   Serial.begin(115200);
@@ -53,10 +51,9 @@ void loopLogic() {
     stopBlink();
   }
 
-  if(lastState == NULL || lastState != newState || millis() - lastSendTime >= FAILOVER_SEND_INTERVAL) {
+  if(lastState == NULL || lastState != newState) {
     sendDataToServer(newState);
     lastState = newState;
-    lastSendTime = millis();
   }
 }
 
