@@ -16,5 +16,6 @@ void sendDataToServer(String state) {
     Serial.println("connection failed!]");
     espClient.stop();
   }
+  Serial.println();
 }
 
