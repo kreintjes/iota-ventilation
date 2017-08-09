@@ -4,11 +4,11 @@
 #define WIFI_SSID           "wicked"
 #define WIFI_PASSWORD       "thereisnospoon"
 
-#define VENTILATION_LOW     60
-#define VENTILATION_HIGH    70
+#define VENTILATION_LOW     50
+#define VENTILATION_HIGH    55
 
 #define DELAY 100
-#define DHT_READ_INTERVAL 60000
+#define DHT_READ_INTERVAL 6000
 #define FAILOVER_SEND_INTERVAL 3600000
 
 WiFiClient espClient;
