@@ -37,7 +37,6 @@ void loop() {
     loopDHT();
     loopLogic();
   }
-  yield();
 }
 
 void loopLogic() {
