@@ -27,17 +27,14 @@ void onDataReceive(String state) {
   if(state == "high") {
     setLed(true);
     setRelais1(false);
-    delay(1000);
     setRelais2(true);
   } else if(state == "low") {
     setLed(true);
     setRelais2(false);
-    delay(1000);
     setRelais1(true);
   } else {
     setLed(false);
     setRelais1(false);
-    delay(1000);
     setRelais2(false);
   }
   lastReceiveTime = millis();
