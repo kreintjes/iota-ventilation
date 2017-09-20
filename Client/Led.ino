@@ -2,33 +2,38 @@
 
 unsigned long lastChangeTime;
 bool ledState = false;
-unsigned long ledSpeed;
-
-void setLed(bool state) {
-  digitalWrite(LEDPIN, state);
-}
+unsigned long ledDelay;
 
 void setupLed() {
   pinMode(LEDPIN, OUTPUT);
   setLed(false);
 }
 
-void blinkLed(unsigned long _ledSpeed) {
-  ledSpeed = _ledSpeed;
+void loopLed() {
+  if(ledDelay == NULL || (lastChangeTime != NULL && millis() - lastChangeTime < ledDelay)) {
+    return;
+  }
+
+  setLed(!ledState);
 }
 
-void stopBlink() {
-  ledSpeed = NULL;
+void blinkLed(unsigned long _ledDelay) {
+  ledDelay = _ledDelay;
+}
+
+void turnLedOn() {
+  ledDelay = NULL;
+  setLed(true);
+}
+
+void turnLedOff() {
+  ledDelay = NULL;
   setLed(false);
 }
 
-void loopLed() {
-  if(ledSpeed == NULL || (lastChangeTime != NULL && millis() - lastChangeTime < ledSpeed)) {
-    return;
-  }
-  ledState = !ledState;
+void setLed(bool state) {
+  digitalWrite(LEDPIN, state);
+  ledState = state;
   lastChangeTime = millis();
-
-  setLed(ledState);
 }
 

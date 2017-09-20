@@ -41,13 +41,13 @@ void loopLogic() {
   String newState;
   if(humidity >= VENTILATION_HIGH) {
     newState = "high";
-    blinkLed(300);
+    turnLedOn();
   } else if (humidity >= VENTILATION_LOW && humidity < VENTILATION_HIGH) {
     newState = "low";
-    blinkLed(800);
+    blinkLed(500);
   } else {
     newState = "off";
-    stopBlink();
+    turnLedOff();
   }
 
   if(lastState == NULL || lastState != newState) {
