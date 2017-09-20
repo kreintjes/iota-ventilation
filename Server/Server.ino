@@ -25,15 +25,12 @@ void loop() {
 
 void onDataReceive(String state) {
   if(state == "high") {
-    setLed(true);
     setRelais1(false);
     setRelais2(true);
   } else if(state == "low") {
-    setLed(true);
     setRelais2(false);
     setRelais1(true);
   } else {
-    setLed(false);
     setRelais1(false);
     setRelais2(false);
   }

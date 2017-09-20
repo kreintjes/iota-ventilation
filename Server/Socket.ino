@@ -8,12 +8,14 @@ void setupSocket() {
 }
 
 void loopSocket() {
-  // Wait until client connected
+  // Check if there is a client connected to the socket
   WiFiClient client = server.available();
   if(client) {
     Serial.printf("Client connected: %s\n", client.localIP().toString().c_str());
     
     while(client.connected()) {
+      // Client disconnects from socket after the message is sent, so we do not hang in this while indefinitely
+      setLed(true);
       if(client.available()) {
         String line = client.readStringUntil('\r');
         Serial.print("Received data: ");
@@ -25,6 +27,8 @@ void loopSocket() {
 
     // Client disconnected: close the connection.
     client.stop();
+    setLed(false);
     Serial.println("Client disonnected");
+    Serial.println();
   }
 }
