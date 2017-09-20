@@ -1,5 +1,4 @@
 #include <ESP8266WiFi.h>
-#include "user_interface.h"
 
 #define WIFI_SSID           "wicked"
 #define WIFI_PASSWORD       "thereisnospoon"
